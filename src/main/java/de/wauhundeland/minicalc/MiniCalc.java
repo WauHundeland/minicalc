@@ -55,16 +55,20 @@ public class MiniCalc extends javax.swing.JFrame {
         StacktraceScrollPane = new javax.swing.JScrollPane();
         StacktraceTextPane = new javax.swing.JTextPane();
         TabPane = new javax.swing.JTabbedPane();
+        CalculatorScrollPane = new javax.swing.JScrollPane();
         CalculatorPanel = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        Expression = new javax.swing.JTextField();
+        HistoryScrollPane = new javax.swing.JScrollPane();
         jLabel2 = new javax.swing.JLabel();
-        jCheckBox2 = new javax.swing.JCheckBox();
+        Checkbox = new javax.swing.JCheckBox();
+        ExpressionLabel = new javax.swing.JLabel();
+        VariablesScrollPane = new javax.swing.JScrollPane();
         VariablesPanel = new javax.swing.JPanel();
         yVarLabel = new javax.swing.JLabel();
         xVar = new javax.swing.JTextField();
         xVarLabel = new javax.swing.JLabel();
         yVar = new javax.swing.JTextField();
+        SettingsScrollPane = new javax.swing.JScrollPane();
         SettingsPanel = new javax.swing.JPanel();
         AlwaysOnTopCheckbox = new javax.swing.JCheckBox();
         LastErrorLabel = new javax.swing.JLabel();
@@ -107,19 +111,21 @@ public class MiniCalc extends javax.swing.JFrame {
 
         TabPane.setTabPlacement(javax.swing.JTabbedPane.RIGHT);
 
-        jTextField1.setFont(new java.awt.Font("Cambria Math", 0, 14)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        Expression.setFont(new java.awt.Font("Cambria Math", 0, 14)); // NOI18N
+        Expression.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                ExpressionActionPerformed(evt);
             }
         });
 
         jLabel2.setFont(new java.awt.Font("Cambria Math", 0, 12)); // NOI18N
-        jLabel2.setText("<html>\n");
+        jLabel2.setText("<html> Verlauf: <br>");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jScrollPane2.setViewportView(jLabel2);
+        HistoryScrollPane.setViewportView(jLabel2);
 
-        jCheckBox2.setText("Ergebnis übernehmen");
+        Checkbox.setText("Ergebnis übernehmen");
+
+        ExpressionLabel.setText("Ausdruck:");
 
         javax.swing.GroupLayout CalculatorPanelLayout = new javax.swing.GroupLayout(CalculatorPanel);
         CalculatorPanel.setLayout(CalculatorPanelLayout);
@@ -128,26 +134,33 @@ public class MiniCalc extends javax.swing.JFrame {
             .addGroup(CalculatorPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(CalculatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(HistoryScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(CalculatorPanelLayout.createSequentialGroup()
-                        .addComponent(jCheckBox2)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(Checkbox)
+                        .addGap(0, 199, Short.MAX_VALUE))
+                    .addGroup(CalculatorPanelLayout.createSequentialGroup()
+                        .addComponent(ExpressionLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Expression)))
                 .addContainerGap())
         );
         CalculatorPanelLayout.setVerticalGroup(
             CalculatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CalculatorPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(CalculatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Expression, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ExpressionLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox2)
+                .addComponent(Checkbox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                .addComponent(HistoryScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        TabPane.addTab("Berechnen", CalculatorPanel);
+        CalculatorScrollPane.setViewportView(CalculatorPanel);
+
+        TabPane.addTab("Rechner", CalculatorScrollPane);
 
         yVarLabel.setText("y = ");
 
@@ -168,7 +181,7 @@ public class MiniCalc extends javax.swing.JFrame {
                     .addComponent(yVarLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(VariablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(yVar, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                    .addComponent(yVar, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
                     .addComponent(xVar))
                 .addContainerGap())
         );
@@ -183,10 +196,12 @@ public class MiniCalc extends javax.swing.JFrame {
                 .addGroup(VariablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(yVar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(yVarLabel))
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addContainerGap(180, Short.MAX_VALUE))
         );
 
-        TabPane.addTab("Variablen", VariablesPanel);
+        VariablesScrollPane.setViewportView(VariablesPanel);
+
+        TabPane.addTab("Variablen", VariablesScrollPane);
 
         AlwaysOnTopCheckbox.setText("Immer im Vordergrund");
         AlwaysOnTopCheckbox.addActionListener(new java.awt.event.ActionListener() {
@@ -226,7 +241,7 @@ public class MiniCalc extends javax.swing.JFrame {
                     .addComponent(ErrorScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(LastErrorSeperator, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(AlwaysOnTopCheckbox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BackToCalculatorButton, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+                    .addComponent(BackToCalculatorButton, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
                     .addGroup(SettingsPanelLayout.createSequentialGroup()
                         .addComponent(LastErrorLabel)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -243,14 +258,16 @@ public class MiniCalc extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(LastErrorLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ErrorScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                .addComponent(ErrorScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ShowStacktraceButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BackToCalculatorButton))
         );
 
-        TabPane.addTab("Einstellungen", SettingsPanel);
+        SettingsScrollPane.setViewportView(SettingsPanel);
+
+        TabPane.addTab("Einstellungen", SettingsScrollPane);
 
         FileMenu.setText("Datei");
 
@@ -286,17 +303,17 @@ public class MiniCalc extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void ExpressionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExpressionActionPerformed
         try {
-            Expression exp = parseExpression(jTextField1.getText());
+            Expression exp = parseExpression(Expression.getText());
 
             double result = exp.evaluate();
 
-            jLabel2.setText(jLabel2.getText() + jTextField1.getText() + " = " + result + "<br>");
-            if (jCheckBox2.isSelected()) {
-                jTextField1.setText(Double.toString(result));
+            jLabel2.setText(jLabel2.getText() + Expression.getText() + " = " + result + "<br>");
+            if (Checkbox.isSelected()) {
+                Expression.setText(Double.toString(result));
             } else {
-                jTextField1.setText("");
+                Expression.setText("");
             }
         } catch (Exception ex) {
             StringWriter sw = new StringWriter();
@@ -307,7 +324,7 @@ public class MiniCalc extends javax.swing.JFrame {
             ErrorTextPane.setText("<html><p style=\"margin-top: 0; color: red\">" + ex.getLocalizedMessage());
             StacktraceTextPane.setText("<html><p style=\"margin-top: 0; color: red\">" + sw.toString());
         }
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_ExpressionActionPerformed
 
     private void AlwaysOnTopCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlwaysOnTopCheckboxActionPerformed
         if (AlwaysOnTopCheckbox.isSelected()) {
@@ -351,24 +368,28 @@ public class MiniCalc extends javax.swing.JFrame {
     private javax.swing.JCheckBox AlwaysOnTopCheckbox;
     private javax.swing.JButton BackToCalculatorButton;
     private javax.swing.JPanel CalculatorPanel;
+    private javax.swing.JScrollPane CalculatorScrollPane;
+    private javax.swing.JCheckBox Checkbox;
     private javax.swing.JMenuItem CloseMenuItem;
     private javax.swing.JScrollPane ErrorScrollPane;
     private javax.swing.JTextPane ErrorTextPane;
+    private javax.swing.JTextField Expression;
+    private javax.swing.JLabel ExpressionLabel;
     private javax.swing.JMenu FileMenu;
+    private javax.swing.JScrollPane HistoryScrollPane;
     private javax.swing.JLabel LastErrorLabel;
     private javax.swing.JSeparator LastErrorSeperator;
     private javax.swing.JMenuBar MenuBar;
     private javax.swing.JPanel SettingsPanel;
+    private javax.swing.JScrollPane SettingsScrollPane;
     private javax.swing.JButton ShowStacktraceButton;
     private javax.swing.JFrame StacktraceContainer;
     private javax.swing.JScrollPane StacktraceScrollPane;
     private javax.swing.JTextPane StacktraceTextPane;
     private javax.swing.JTabbedPane TabPane;
     private javax.swing.JPanel VariablesPanel;
-    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JScrollPane VariablesScrollPane;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField xVar;
     private javax.swing.JLabel xVarLabel;
     private javax.swing.JTextField yVar;
