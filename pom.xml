@@ -30,7 +30,7 @@
       <configuration>
         <archive>
           <manifest>
-            <mainClass>fully.qualified.MainClass</mainClass>
+            <mainClass>de.wauhundeland.minicalc.MiniCalc</mainClass>
           </manifest>
         </archive>
         <descriptorRefs>
